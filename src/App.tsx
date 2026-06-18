@@ -749,7 +749,7 @@ export default function App() {
                 { Icon: Github, href: 'https://github.com/Piyushkushwaha2025', title: 'GitHub' },
                 { Icon: Linkedin, href: 'https://www.linkedin.com/in/piyush-kushwaha-42911a392', title: 'LinkedIn' },
                 { Icon: Instagram, href: 'https://www.instagram.com/baby_fun_2025', title: 'AI Visuals' },
-                { Icon: Instagram, href: 'https://www.instagram.com/alf.reddanger', title: 'Personal Instagram' },
+                { Icon: Instagram, href: 'https://www.instagram.com/ast.efx999/', title: 'Professional Instagram' },
                 { Icon: Youtube, href: '#', title: 'YouTube' },
                 { Icon: Mail, href: 'mailto:piyushkushwaha203@gmail.com', title: 'Email' },
               ].map(({ Icon, href, title }, i) => (
