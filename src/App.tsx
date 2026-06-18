@@ -745,9 +745,9 @@ export default function App() {
             <TiltCard className="relative w-72 h-[26rem] md:w-96 md:h-[36rem] rounded-[2.5rem] border border-neutral-800 bg-[#0a0a0a] shadow-2xl z-10 group interactive-cursor transform-style-3d overflow-visible">
               <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden" style={{ transform: 'translateZ(-10px)' }}>
                 <img 
-                  src="https://images.unsplash.com/photo-1555952517-2e8af104f7e5?auto=format&fit=crop&q=80&w=800" 
+                  src={new URL('/piyush-hero.png', import.meta.url).href}
                   alt="Piyush Kushwaha" 
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-70 grayscale group-hover:grayscale-0 pointer-events-none"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80 grayscale group-hover:grayscale-0 pointer-events-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 pointer-events-none" />
               </div>
