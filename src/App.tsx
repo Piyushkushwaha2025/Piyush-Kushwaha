@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Monitor, Smartphone, Play, Video, Share2, Sparkles, ChevronRight, Github, Linkedin, Instagram, Mail, MessageCircle, MapPin, Palette, Bot, X, Send } from 'lucide-react';
+import heroImage from './assets/piyush-hero.png';
 
 // ─── Theme & Data ──────────────────────────────────────────────────────────────
 
@@ -745,7 +746,7 @@ export default function App() {
             <TiltCard className="relative w-72 h-[26rem] md:w-96 md:h-[36rem] rounded-[2.5rem] border border-neutral-800 bg-[#0a0a0a] shadow-2xl z-10 group interactive-cursor transform-style-3d overflow-visible">
               <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden" style={{ transform: 'translateZ(-10px)' }}>
                 <img 
-                  src={new URL('/piyush-hero.png', import.meta.url).href}
+                  src={heroImage}
                   alt="Piyush Kushwaha" 
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80 grayscale group-hover:grayscale-0 pointer-events-none"
                 />
