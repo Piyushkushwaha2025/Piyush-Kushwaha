@@ -48,13 +48,13 @@ const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   { title: 'SaaS Dashboard', category: 'Web Dev', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800', tech: ['React', 'Tailwind', 'Zustand'] },
   { title: 'Fintech Platform', category: 'Web Dev', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800', tech: ['Next.js', 'Framer'] },
   { title: 'Agency Landing Page', category: 'Web Dev', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800', tech: ['HTML5', 'GSAP'] },
-  { title: '1', category: 'AI Visuals', youtubeId: 'nbUU_npD6Vo' },
-  { title: '3', category: 'AI Visuals', youtubeId: 'boWTXrSLsps' },
-  { title: '2', category: 'AI Visuals', youtubeId: 'f-XYxmYIPsc' },
-  { title: 'Cat Wants Pizza', category: 'AI Visuals', youtubeId: 'zyE2gmuqgfs' },
-  { title: 'Animals and Numbers Rhyming', category: 'AI Visuals', youtubeId: 'L6-jcz6IVLc' },
-  { title: 'Create an 8-Second Video', category: 'AI Visuals', youtubeId: 'Tfo3uHbdi1M' },
-  { title: 'Create an 8-Second Video 2', category: 'AI Visuals', youtubeId: 'IJ1_uAmVQ6s' },
+  { title: 'AI Storyboard: Scene I', category: 'AI Visuals', youtubeId: 'nbUU_npD6Vo' },
+  { title: 'AI Storyboard: Scene III', category: 'AI Visuals', youtubeId: 'boWTXrSLsps' },
+  { title: 'AI Storyboard: Scene II', category: 'AI Visuals', youtubeId: 'f-XYxmYIPsc' },
+  { title: 'The Pizza Cat Adventure', category: 'AI Visuals', youtubeId: 'zyE2gmuqgfs' },
+  { title: 'Educational AI: Animal Rhymes', category: 'AI Visuals', youtubeId: 'L6-jcz6IVLc' },
+  { title: 'Dynamic Motion Loop', category: 'AI Visuals', youtubeId: 'Tfo3uHbdi1M' },
+  { title: 'Visual Effects Short', category: 'AI Visuals', youtubeId: 'IJ1_uAmVQ6s' },
 ];
 
 // ─── Hooks ──────────────────────────────────────────────────────────────────────
