@@ -744,7 +744,7 @@ export default function App() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] md:w-[650px] md:h-[650px] border border-solid rounded-full pointer-events-none opacity-20 transition-colors duration-500" style={{ borderColor: 'var(--color-accent)', animation: 'spin-3d 30s linear infinite reverse', transformStyle: 'preserve-3d' }} />
 
             <TiltCard className="relative w-72 h-[26rem] md:w-96 md:h-[36rem] rounded-[2.5rem] border border-neutral-800 bg-[#0a0a0a] shadow-2xl z-10 group interactive-cursor transform-style-3d overflow-visible">
-              <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden" style={{ transform: 'translateZ(-10px)' }}>
+              <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden" style={{ transform: 'translateZ(0px)' }}>
                 <img 
                   src={heroImage}
                   alt="Piyush Kushwaha" 
