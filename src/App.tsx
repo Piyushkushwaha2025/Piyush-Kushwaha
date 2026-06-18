@@ -519,6 +519,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('All');
   const [activeTheme, setActiveTheme] = useState(THEMES[0]);
   const [isThemePaletteOpen, setIsThemePaletteOpen] = useState(false);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -864,14 +865,14 @@ export default function App() {
               <TiltCard key={i} className="group relative rounded-[2rem] overflow-hidden bg-[#0a0a0a] border border-neutral-900 interactive-cursor transform-style-3d">
                 <div className="relative aspect-video overflow-hidden">
                   {project.youtubeId ? (
-                    <a href={`https://youtu.be/${project.youtubeId}`} target="_blank" rel="noreferrer" className="block w-full h-full interactive-cursor">
+                    <button onClick={() => setActiveVideo(project.youtubeId!)} className="block w-full h-full interactive-cursor">
                       <img src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm pointer-events-none">
                         <div className="p-4 bg-white text-black rounded-full shadow-xl" style={{ transform: 'translateZ(40px)' }}>
                           <Play fill="black" size={24} />
                         </div>
                       </div>
-                    </a>
+                    </button>
                   ) : (
                     <>
                       <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 pointer-events-none" />
@@ -964,6 +965,27 @@ export default function App() {
           &copy; {new Date().getFullYear()} <span className="text-white">PIYUSH KUSHWAHA</span>. ALL SYSTEMS ONLINE.
         </p>
       </footer>
+
+      {/* Video Modal */}
+      {activeVideo && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 md:p-12 animate-in fade-in duration-300">
+          <div className="relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <button 
+              onClick={() => setActiveVideo(null)}
+              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/80 rounded-full text-white backdrop-blur-md transition-colors"
+            >
+              <X size={24} />
+            </button>
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0&modestbranding=1`}
+              title="Video Player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
       
       <AIAssistant />
     </div>
