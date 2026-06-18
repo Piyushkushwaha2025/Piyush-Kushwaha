@@ -19,7 +19,8 @@ interface Service {
 interface PortfolioProject {
   title: string;
   category: string;
-  image: string;
+  image?: string;
+  youtubeId?: string;
   tech?: string[];
   duration?: string;
   type?: string;
@@ -44,12 +45,16 @@ const SERVICES: Service[] = [
 ];
 
 const PORTFOLIO_PROJECTS: PortfolioProject[] = [
-  { title: 'SaaS Dashboard', category: 'Websites', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800', tech: ['React', 'Tailwind', 'Zustand'] },
-  { title: 'Fintech Platform', category: 'Websites', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800', tech: ['Next.js', 'Framer'] },
-  { title: 'Tech Review Edit', category: 'Videos', image: 'https://images.unsplash.com/photo-1574717024453-354056a3df3f?auto=format&fit=crop&q=80&w=800', duration: '10:24', type: 'YouTube' },
-  { title: 'Cyberpunk Portrait', category: 'AI Art', image: 'https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&q=80&w=800', type: 'Midjourney' },
-  { title: 'Brand Retouching', category: 'Image Editing', image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=800', type: 'Photoshop' },
-  { title: 'Agency Landing Page', category: 'Websites', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800', tech: ['HTML5', 'GSAP'] },
+  { title: 'SaaS Dashboard', category: 'Web Dev', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800', tech: ['React', 'Tailwind', 'Zustand'] },
+  { title: 'Fintech Platform', category: 'Web Dev', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800', tech: ['Next.js', 'Framer'] },
+  { title: 'Agency Landing Page', category: 'Web Dev', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800', tech: ['HTML5', 'GSAP'] },
+  { title: 'AI Cartoon Animation 1', category: 'AI Visuals', youtubeId: 'nbUU_npD6Vo' },
+  { title: 'AI Cartoon Animation 2', category: 'AI Visuals', youtubeId: 'boWTXrSLsps' },
+  { title: 'AI Cartoon Animation 3', category: 'AI Visuals', youtubeId: 'f-XYxmYIPsc' },
+  { title: 'AI Cartoon Animation 4', category: 'AI Visuals', youtubeId: 'zyE2gmuqgfs' },
+  { title: 'AI Cartoon Animation 5', category: 'AI Visuals', youtubeId: 'L6-jcz6IVLc' },
+  { title: 'AI Cartoon Short 1', category: 'AI Visuals', youtubeId: 'Tfo3uHbdi1M' },
+  { title: 'AI Cartoon Short 2', category: 'AI Visuals', youtubeId: 'IJ1_uAmVQ6s' },
 ];
 
 // ─── Hooks ──────────────────────────────────────────────────────────────────────
@@ -858,12 +863,25 @@ export default function App() {
             {filteredProjects.map((project, i) => (
               <TiltCard key={i} className="group relative rounded-[2rem] overflow-hidden bg-[#0a0a0a] border border-neutral-900 interactive-cursor transform-style-3d">
                 <div className="relative aspect-video overflow-hidden">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 pointer-events-none" />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm pointer-events-none">
-                    <div className="p-4 bg-white text-black rounded-full shadow-xl" style={{ transform: 'translateZ(40px)' }}>
-                      <Play fill="black" size={24} />
-                    </div>
-                  </div>
+                  {project.youtubeId ? (
+                    <iframe 
+                      className="w-full h-full object-cover" 
+                      src={`https://www.youtube.com/embed/${project.youtubeId}`} 
+                      title={project.title} 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen 
+                      loading="lazy" 
+                    />
+                  ) : (
+                    <>
+                      <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 pointer-events-none" />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm pointer-events-none">
+                        <div className="p-4 bg-white text-black rounded-full shadow-xl" style={{ transform: 'translateZ(40px)' }}>
+                          <Play fill="black" size={24} />
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
                 
                 <div className="p-8 pointer-events-none" style={{ transform: 'translateZ(20px)' }}>
