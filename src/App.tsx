@@ -864,14 +864,14 @@ export default function App() {
               <TiltCard key={i} className="group relative rounded-[2rem] overflow-hidden bg-[#0a0a0a] border border-neutral-900 interactive-cursor transform-style-3d">
                 <div className="relative aspect-video overflow-hidden">
                   {project.youtubeId ? (
-                    <iframe 
-                      className="w-full h-full object-cover" 
-                      src={`https://www.youtube.com/embed/${project.youtubeId}`} 
-                      title={project.title} 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen 
-                      loading="lazy" 
-                    />
+                    <a href={`https://youtu.be/${project.youtubeId}`} target="_blank" rel="noreferrer" className="block w-full h-full interactive-cursor">
+                      <img src={`https://img.youtube.com/vi/${project.youtubeId}/maxresdefault.jpg`} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm pointer-events-none">
+                        <div className="p-4 bg-white text-black rounded-full shadow-xl" style={{ transform: 'translateZ(40px)' }}>
+                          <Play fill="black" size={24} />
+                        </div>
+                      </div>
+                    </a>
                   ) : (
                     <>
                       <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 pointer-events-none" />
