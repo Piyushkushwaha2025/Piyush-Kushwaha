@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Monitor, Smartphone, Play, Video, Share2, Sparkles, ChevronRight, Github, Linkedin, Instagram, Mail, MessageCircle, MapPin, Palette, Bot, X, Send } from 'lucide-react';
+import { Monitor, Smartphone, Play, Video, Share2, Sparkles, ChevronRight, Github, Linkedin, Instagram, Mail, MessageCircle, MapPin, Palette, Bot, X, Send, Youtube } from 'lucide-react';
 import heroImage from './assets/piyush-hero.png';
 
 // ─── Theme & Data ──────────────────────────────────────────────────────────────
@@ -513,11 +513,19 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('All');
   const [activeTheme, setActiveTheme] = useState(THEMES[0]);
+  const [isThemePaletteOpen, setIsThemePaletteOpen] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
   }, []);
+
+  useEffect(() => {
+    if (isThemePaletteOpen) {
+      const timer = setTimeout(() => setIsThemePaletteOpen(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isThemePaletteOpen]);
 
   // 3D Warp Field Canvas Background
   useEffect(() => {
@@ -654,16 +662,24 @@ export default function App() {
       <canvas ref={canvasRef} className="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-40" />
 
       {/* Theme Switcher */}
-      <div className="fixed top-24 right-4 md:right-8 z-50 flex flex-col gap-3 p-3 rounded-full bg-[#0a0a0a]/80 backdrop-blur-xl border border-neutral-800 shadow-2xl">
-        {THEMES.map(theme => (
-          <button
-            key={theme.name}
-            onClick={() => setActiveTheme(theme)}
-            className={`w-4 h-4 rounded-full transition-all duration-300 theme-btn ${activeTheme.name === theme.name ? 'scale-125 ring-2 ring-white/50 ring-offset-2 ring-offset-black' : 'opacity-50 hover:opacity-100'}`}
-            style={{ backgroundColor: theme.hex }}
-            title={theme.name}
-          />
-        ))}
+      <div 
+        className="fixed top-24 right-4 md:right-8 z-50 flex flex-col items-center gap-3 p-3 rounded-full bg-[#0a0a0a]/80 backdrop-blur-xl border border-neutral-800 shadow-2xl transition-all duration-300 cursor-pointer"
+        onMouseEnter={() => setIsThemePaletteOpen(true)}
+        onClick={() => setIsThemePaletteOpen(true)}
+      >
+        {!isThemePaletteOpen ? (
+          <Palette className="w-5 h-5 text-neutral-400" />
+        ) : (
+          THEMES.map(theme => (
+            <button
+              key={theme.name}
+              onClick={(e) => { e.stopPropagation(); setActiveTheme(theme); setIsThemePaletteOpen(false); }}
+              className={`w-4 h-4 rounded-full transition-all duration-300 theme-btn ${activeTheme.name === theme.name ? 'scale-125 ring-2 ring-white/50 ring-offset-2 ring-offset-black' : 'opacity-50 hover:opacity-100'}`}
+              style={{ backgroundColor: theme.hex }}
+              title={theme.name}
+            />
+          ))
+        )}
       </div>
 
       {/* Navbar */}
@@ -724,12 +740,14 @@ export default function App() {
             
             <div className="flex items-center gap-6">
               {[
-                { Icon: Github, href: 'https://github.com/Piyushkushwaha2025' },
-                { Icon: Linkedin, href: '#' },
-                { Icon: Instagram, href: '#' },
-                { Icon: Mail, href: 'mailto:piyushkushwaha203@gmail.com' },
-              ].map(({ Icon, href }, i) => (
-                <a key={i} href={href} target="_blank" rel="noreferrer" className="text-neutral-500 hover:text-white transition-colors interactive-cursor">
+                { Icon: Github, href: 'https://github.com/Piyushkushwaha2025', title: 'GitHub' },
+                { Icon: Linkedin, href: 'https://www.linkedin.com/in/piyush-kushwaha-42911a392', title: 'LinkedIn' },
+                { Icon: Instagram, href: 'https://www.instagram.com/baby_fun_2025', title: 'AI Visuals' },
+                { Icon: Instagram, href: 'https://www.instagram.com/alf.reddanger', title: 'Personal Instagram' },
+                { Icon: Youtube, href: '#', title: 'YouTube' },
+                { Icon: Mail, href: 'mailto:piyushkushwaha203@gmail.com', title: 'Email' },
+              ].map(({ Icon, href, title }, i) => (
+                <a key={i} href={href} target={href === '#' ? '_self' : '_blank'} rel="noreferrer" title={title} className="text-neutral-500 hover:text-white transition-colors interactive-cursor">
                   <Icon size={24} />
                 </a>
               ))}
